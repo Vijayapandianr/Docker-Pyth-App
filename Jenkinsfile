@@ -7,7 +7,7 @@ pipeline {
         }
     }
     environment {
-	    registry ="vijayapandian/pythonApp"
+	    registry ="vijayapandian/python-app"
     }
             
     stages {
@@ -22,12 +22,6 @@ pipeline {
 		 script {
                		 def img = docker.build registry
 		   }
-                }
-            }
-		
-		stage ('Deployment Stage') {
-            steps {
-                echo "Deployment staage"
                 }
             }
         
