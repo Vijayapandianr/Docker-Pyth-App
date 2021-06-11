@@ -19,7 +19,9 @@ pipeline {
 		
 	stage ('Build  image') {
             steps {
-                def img = docker.build registry
+		 script {
+               		 def img = docker.build registry
+		   }
                 }
             }
 		
