@@ -1,18 +1,26 @@
 pipeline {
-    agent  {
-         label 'docker_node'
+    agent {
+        docker { 
+            image 'docker:latest' 
+            args '--rm -v /var/run/docker.sock:/var/run/docker.sock -u root'
+            
+        }
+    }
+    environment {
+        img = "vijayapandian"
+	    registry ="vijayapandian/pythonApp"
     }
             
     stages {
-        stage ('Checkout Stage') {
+        stage ('Checkout') {
             steps {
-                echo "Checkout staage"
+                checkout scm
                 }
             }
 		
-		stage ('Build Stage') {
+	stage ('Build  image') {
             steps {
-                echo "Build staage"
+                def img = docker.build registry
                 }
             }
 		
