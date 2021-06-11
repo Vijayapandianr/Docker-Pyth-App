@@ -7,7 +7,6 @@ pipeline {
         }
     }
     environment {
-        img = "vijayapandian"
 	    registry ="vijayapandian/pythonApp"
     }
             
