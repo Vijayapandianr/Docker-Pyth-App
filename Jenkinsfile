@@ -17,7 +17,7 @@ pipeline {
                 //checkout scm
 		 checkout([
                     $class: 'GitSCM', 
-                    branches: branches: [[name: '*/main'], [name: '*/release'], [name: '*/develop']], 
+                    branches: [[name: '*/main'], [name: '*/release'], [name: '*/develop']], 
                     userRemoteConfigs: [[url: 'https://github.com/Vijayapandianr/Docker-Pyth-App.git']]
                 ])   
                 }
