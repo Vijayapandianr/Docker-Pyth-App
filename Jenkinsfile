@@ -14,12 +14,7 @@ pipeline {
     stages {
         stage ('Checkout') {
             steps {
-                checkout scm
-		 /*checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main'], [name: '*/release'], [name: '*/develop']], 
-                    userRemoteConfigs: [[url: 'https://github.com/Vijayapandianr/Docker-Pyth-App.git']]
-                ]) */  
+                checkout scm 
                 }
             }
 		
