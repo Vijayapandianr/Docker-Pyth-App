@@ -28,7 +28,7 @@ pipeline {
 	    stage ('Push image') {
             steps {
 		 script {
-               		 docker.withRegistry('https://registry.hub.docker.com', 'df652229-91c9-48d0-aff1-d138d231c66a') {
+               		 docker.withRegistry('https://registry.hub.docker.com', 'credential-docker') {
             		dockerImage.push()
 			 }	 
 		   }
