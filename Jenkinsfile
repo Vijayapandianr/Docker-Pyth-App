@@ -35,6 +35,13 @@ pipeline {
                 }
             }
 	    
+	    stage('docker stop container') {
+		 steps {
+		    sh 'docker ps -f name=python-appContainer -q | xargs --no-run-if-empty docker container stop'
+		    sh 'docker container ls -a -fname=python-appContainer -q | xargs -r docker container rm'
+		 }
+       	     }
+	    
 	    stage('Docker Run') {
 	     steps{
 		 script {
