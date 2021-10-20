@@ -25,16 +25,15 @@ pipeline {
 		   }
                 }
             }
-	   /* stage ('Push image') {
-            steps {
+	   stage('Pushing to ECR') {
+	     steps{  
 		 script {
-               		 docker.withRegistry('https://registry.hub.docker.com', 'credential-docker') {
-            		dockerImage.push()
-			 }	 
-		   }
-                }
-            }
-	    
+			sh 'aws ecr-public get-login-password --region eu-west-1 | docker login --username AWS --password-stdin public.ecr.aws/w7w7h7b5'
+			sh 'docker push public.ecr.aws/w7w7h7b5/dockerapp:latest'
+		 }
+        }
+      }
+	    /*
 	    stage('docker stop container') {
 		 steps {
 		    sh 'docker ps -f name=python-appContainer -q | xargs --no-run-if-empty docker container stop'
