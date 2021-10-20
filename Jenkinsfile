@@ -8,6 +8,7 @@ pipeline {
     }
     environment {
 	    registry ="182313166565.dkr.ecr.eu-west-1.amazonaws.com/docker-pri-app"
+	    //registry= "369989769935.dkr.ecr.ap-south-1.amazonaws.com/testapp"
 	    dockerImage =""
     }
             
@@ -28,8 +29,8 @@ pipeline {
 	   stage('Pushing to ECR') {
 	     steps{  
 		 script {
-			sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 182313166565.dkr.ecr.eu-west-1.amazonaws.com'
-			sh 'docker push 182313166565.dkr.ecr.us-east-2.amazonaws.com/docker-pri-app:latest'
+			sh 'aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 182313166565.dkr.ecr.eu-west-1.amazonaws.com'
+			sh 'docker push 182313166565.dkr.ecr.eu-west-1.amazonaws.com/docker-pri-app:latest'
 		 }
         }
       }
