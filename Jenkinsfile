@@ -7,7 +7,7 @@ pipeline {
         }
     }
     environment {
-	    registry ="vijayapandian/python-app"
+	    registry ="public.ecr.aws/w7w7h7b5/dockerapp"
 	    dockerImage =""
     }
             
@@ -25,7 +25,7 @@ pipeline {
 		   }
                 }
             }
-	    stage ('Push image') {
+	   /* stage ('Push image') {
             steps {
 		 script {
                		 docker.withRegistry('https://registry.hub.docker.com', 'credential-docker') {
@@ -48,7 +48,7 @@ pipeline {
 		    dockerImage.run("-p 8096:5000 --rm --name python-appContainer")
 		 }
 	      }
-	    }
+	    } */
         
        }
 }
