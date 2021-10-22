@@ -43,28 +43,12 @@ pipeline {
 			    sh 'aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 182313166565.dkr.ecr.eu-west-1.amazonaws.com'
 			    sh 'docker push 182313166565.dkr.ecr.eu-west-1.amazonaws.com/docker-pri-app:latest'
 			}
-		    }
-			 
-			 
 		}
+	    
 	      }
 	    }
 
-	    /*
-	    stage('docker stop container') {
-		 steps {
-		    sh 'docker ps -f name=python-appContainer -q | xargs --no-run-if-empty docker container stop'
-		    sh 'docker container ls -a -fname=python-appContainer -q | xargs -r docker container rm'
-		 }
-       	     }
-	    
-	    stage('Docker Run') {
-	     steps{
-		 script {
-		    dockerImage.run("-p 8096:5000 --rm --name python-appContainer")
-		 }
-	      }
-	    } */
+	
         
        }
 }
