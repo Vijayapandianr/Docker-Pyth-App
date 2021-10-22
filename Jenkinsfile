@@ -39,8 +39,8 @@ pipeline {
 	     stage('Upload Image to ECR') {
 	     steps{   
 		 script {
-		    docker.withRegistry( 'https://182313166565.dkr.ecr.eu-west-1.amazonaws.com', "ecr:eu-west-1:$registryCredential" ) {
-		    docker.image("docker-pri-app"). push('latest')
+		    docker.withRegistry( 'https://182313166565.dkr.ecr.eu-west-1.amazonaws.com/', 'ecr:eu-west-1:df652229-91c9-48d0-aff1-d138d231c66a' ) {
+		    docker.image("docker-pri-app").push('latest')
 		    }
 		}
 	      }
