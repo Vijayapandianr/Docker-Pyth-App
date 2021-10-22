@@ -39,9 +39,13 @@ pipeline {
 	     stage('Upload Image to ECR') {
 	     steps{   
 		 script {
-		    docker.withRegistry( 'https://182313166565.dkr.ecr.eu-west-1.amazonaws.com/', 'ecr:eu-west-1:df652229-91c9-48d0-aff1-d138d231c66a' ) {
-		    docker.image("docker-pri-app").push('latest')
+		    	withDockerRegistry(credentialsId: 'df652229-91c9-48d0-aff1-d138d231c66a', url: '182313166565.dkr.ecr.eu-west-1.amazonaws.com/docker-pri-app') {
+			    sh 'aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 182313166565.dkr.ecr.eu-west-1.amazonaws.com'
+			    sh 'docker push 182313166565.dkr.ecr.eu-west-1.amazonaws.com/docker-pri-app:latest'
+			}
 		    }
+			 
+			 
 		}
 	      }
 	    }
