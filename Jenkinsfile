@@ -1,6 +1,12 @@
 pipeline {
-    agent any
     
+    agent {
+        docker { 
+            image 'docker:latest' 
+            args '--rm -v /var/run/docker.sock:/var/run/docker.sock -u root'
+            
+        }
+    }
             
     stages {
         stage ('Checkout') {
@@ -8,7 +14,14 @@ pipeline {
                 checkout scm 
                 }
             }
-		
+	
+	    	stage ('Build  image') {
+            steps {
+		 script {
+			 dockerImage = docker.build registry
+		   }
+                }
+            }
 	
 	     stage('Upload Image to ECR') {
 	     steps{   
