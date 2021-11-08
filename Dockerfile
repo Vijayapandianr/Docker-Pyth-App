@@ -7,6 +7,6 @@ RUN apt install -y wget
 RUN wget https://releases.hashicorp.com/terraform/1.0.10/terraform_1.0.10_linux_amd64.zip
 RUN apt install -y unzip
 RUN unzip terraform_1.0.10_linux_amd64.zip
-RUN terraform --version
+RUN terraform version
 EXPOSE 5000
 CMD ["app.py"]
